@@ -15,11 +15,9 @@ bool checking(vector<int> vect, int cap, int days, int n){
                 sum=vect[i];
             }
         }
-       
-    
-
     return daysreq<=days;
 }
+
 
 int main(){
      int n;
