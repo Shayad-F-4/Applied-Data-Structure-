@@ -18,24 +18,26 @@ int main(){
 
     int low=0;
     int high=n*5;
-    int check=-1;
     int ans=-1;
 
-    if(5+(n-1)*6 == n){
-        return -1;
-    }
+    
 
     while(low<=high){
         int mid = (low+high)/2;
 
-        check = trailingZero(mid);
+        int check = trailingZero(mid);
 
         if(check==n){
             ans=mid;
             high=mid-1;
-        }else{
+        }
+        else if(check<n){
             low=mid+1;
         }
+        else{
+            high=mid-1;
+        }
+    
     }
     cout<<ans;
 }
