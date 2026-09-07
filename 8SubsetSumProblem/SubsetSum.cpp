@@ -45,9 +45,9 @@ int main() {
     cin >> sum;
 
     if (subsetSum(arr, sum))
-        cout << "Subset with given sum exists." << endl;
+        cout <<"Yes... Subset with given sum exists." << endl;
     else
-        cout << "Subset with given sum does not exist." << endl;
+        cout <<"No... Subset with given sum does not exist." << endl;
 
     return 0;
 }
