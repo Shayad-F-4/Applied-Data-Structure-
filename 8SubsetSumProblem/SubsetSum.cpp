@@ -2,30 +2,22 @@
 #include <vector>
 using namespace std;
 
-bool subsetSum(vector<int>& arr, int sum) {
-    int n = arr.size();
+bool subsetSum(vector<int>& arr, int n, int sum) {
+    // If target sum is 0, subset exists
+    if (sum == 0)
+        return true;
 
-    // dp[i][j] = true if sum j can be formed using first i elements
-    vector<vector<bool>> dp(n + 1, vector<bool>(sum + 1, false));
+    // If no elements are left
+    if (n == 0)
+        return false;
 
-    // Sum 0 can always be formed using an empty subset
-    for (int i = 0; i <= n; i++) {
-        dp[i][0] = true;
-    }
-  
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= sum; j++) {
+    // If current element is greater than sum, skip it
+    if (arr[n - 1] > sum)
+        return subsetSum(arr, n - 1, sum);
 
-            // Don't include current element
-            dp[i][j] = dp[i - 1][j];
-          
-            if (arr[i - 1] <= j) {
-                dp[i][j] = dp[i][j] || dp[i - 1][j - arr[i - 1]];
-            }
-        }
-    }
-
-    return dp[n][sum];
+    // Include or exclude current element
+    return subsetSum(arr, n - 1, sum) ||
+           subsetSum(arr, n - 1, sum - arr[n - 1]);
 }
 
 int main() {
@@ -44,10 +36,10 @@ int main() {
     cout << "Enter target sum: ";
     cin >> sum;
 
-    if (subsetSum(arr, sum))
-        cout <<"Yes... Subset with given sum exists." << endl;
+    if (subsetSum(arr, n, sum))
+        cout << "Subset with given sum exists.";
     else
-        cout <<"No... Subset with given sum does not exist." << endl;
+        cout << "Subset with given sum does not exist.";
 
     return 0;
 }
