@@ -22,11 +22,10 @@ int main() {
     vector<int> arr = {1, 2, 3};
 
     int target;
-    cout << "Enter the target sum: ";
+    cout << "Enter target sum: ";
     cin >> target;
 
-    cout << "Number of combinations: "
-         << numOfCombinationSum(arr, target);
+    cout << "Number of combinations: "<< numOfCombinationSum(arr, target);
 
     return 0;
 }

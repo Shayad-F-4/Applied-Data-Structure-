@@ -3,6 +3,7 @@
 #include<algorithm>
 using namespace std;
 
+
 bool checking(vector<int> vect, int cap, int days, int n){
     int sum=0;
     int daysreq=1;
@@ -12,6 +13,8 @@ bool checking(vector<int> vect, int cap, int days, int n){
                 sum+=vect[i];
             }else{
                 daysreq++;
+              
+              
                 sum=vect[i];
             }
         }
@@ -52,5 +55,5 @@ int main(){
             low=mid+1;
         }
     }
-    cout<<ans;
+    cout<<"MIN WORK CAN BE DONE IN A DAY: "<<ans;
 }
